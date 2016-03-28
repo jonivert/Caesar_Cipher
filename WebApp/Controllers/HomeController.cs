@@ -16,23 +16,24 @@ namespace WebApp.Controllers
         }
 
         private const string Alf = "abcdefghijklmnopqrstuvwxyz";
-        private const int MostFrequent = 4; //индекс для "c"
+        private const int MostFrequent = 4; //индекс для "e"
         private const int LessFrequent = 25; //индекс для "z"
 
         [AllowAnonymous]
         [HttpPost]
         public string TranslateTextToCaesar(string text, int offset)
         {
+            var folderPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
             text = text.ToLower();
             //проверки на корректность введных данных
             if (offset < 0 || offset > 26)
                 throw new OffsetOutOfRangeException(offset +
                                                     " is an incorrect offset, please set 0 >= value <= 26");
 
-            System.IO.File.WriteAllText(@"C:\Users\Vladimir\Desktop\input.txt", text);
+            System.IO.File.WriteAllText(folderPath + "\\input.txt", text);
             if (offset == 0 || offset == 26)
             {
-                System.IO.File.WriteAllText(@"C:\Users\Vladimir\Desktop\output.txt", text);
+                System.IO.File.WriteAllText(folderPath+"\\output.txt", text);
                 return text;
             }
             var resultSb = new StringBuilder(text.Length);
@@ -50,7 +51,7 @@ namespace WebApp.Controllers
                 }
                 else resultSb.Append(charachter);
             }
-            System.IO.File.WriteAllText(@"C:\Users\Vladimir\Desktop\output.txt", resultSb.ToString());
+            System.IO.File.WriteAllText(folderPath + "\\output.txt", resultSb.ToString());
             //return View("Index");
             return resultSb.ToString(); //ConverObjectToJson(new TranslateData{Offset = inputTranslateData.Offset, Text = resultSb.ToString()});
         }
@@ -59,16 +60,17 @@ namespace WebApp.Controllers
         [HttpPost]
         public string TranslateTextFromCaesar(string text, int offset)
         {
+            var folderPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
             text = text.ToLower();
             //проверки на корректность введных данных
             if (offset < 0 || offset > 26)
                 throw new OffsetOutOfRangeException(offset +
                                                     " is an incorrect offset, please set 0 >= value <= 26");
 
-            System.IO.File.WriteAllText(@"C:\Users\Vladimir\Desktop\input.txt", text);
+            System.IO.File.WriteAllText(folderPath + "\\input.txt", text);
             if (offset == 0 || offset == 26)
             {
-                System.IO.File.WriteAllText(@"C:\Users\Vladimir\Desktop\output.txt", text);
+                System.IO.File.WriteAllText(folderPath + "\\output.txt", text);
                 return text;
             }
             var resultSb = new StringBuilder(text.Length);
@@ -86,7 +88,7 @@ namespace WebApp.Controllers
                 }
                 else resultSb.Append(charachter);
             }
-            System.IO.File.WriteAllText(@"C:\Users\Vladimir\Desktop\output.txt", resultSb.ToString());
+            System.IO.File.WriteAllText(folderPath + "\\output.txt", resultSb.ToString());
             return resultSb.ToString();
         }
 
