@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html ng-app="WebApp" ng-controller="LandingPageController">
+<head>
+    <style>
+        .row {
+            padding: 5px;
+            float: left;
+            /*width: 200px;*/
+        }
+
+        .button {
+            padding: 2px;
+            width: 100px;
+            resize: none;
+        }
+        .bar {
+            background: blue;
+            position: absolute;
+            bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+<h2>"Шифр цезаря" </h2>
+<hr/>
+<div >
+    <div class="row">
+        <textarea ng-model="inputText" autofocus rows="25" cols="50" placeholder="input" style="resize: none"></textarea>
+    </div>
+    <div class="row" style="margin-top: 100px">
+        <div><textarea ng-model="offset" rows="1" class="button"></textarea>
+        </div>
+        <div align="center"><button ng-click="encrypt()" class="button">Зашифровать</button>
+        </div>
+        <div align="center"><button ng-click="decrypt(); getPropose()" class="button">Расшифровать</button>
+        </div>
+    </div>
+    <div class="row">
+        <textarea ng-model="outputText" autofocus rows="25" cols="50" id="outputText" placeholder="output" style="resize: none" readonly></textarea>
+    </div>
+    <div style="width: 100%; height: 1px; clear: both;"></div>
+</div>
+<hr/>
+    <output>Предпологаемые сдвиги для расшифровки данного текста {{propose.Max}} и {{propose.Min}}</output>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+@Scripts.Render("~/bundles/WebApp")
+</body>
+</html>
