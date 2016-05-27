@@ -9,6 +9,13 @@ var LandingPageController = function($scope, $http) {
     $scope.offset = 1;
     $scope.propose = "";
 
+    $scope.validate = function (event) {
+        if ((event.keyCode < 48) || (event.keyCode > 57)) {
+            event.preventDefault();
+        }
+        console.log(event);
+    }
+
     $scope.encrypt = function() {
         $http({
             method: 'POST',

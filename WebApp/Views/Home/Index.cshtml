@@ -29,11 +29,16 @@
         <textarea ng-model="inputText" autofocus rows="25" cols="50" placeholder="input" style="resize: none"></textarea>
     </div>
     <div class="row" style="margin-top: 100px">
-        <div><textarea ng-model="offset" rows="1" class="button"></textarea>
+        <div>
+            @*<textarea ng-model="offset" rows="1" class="button"></textarea>*@
+            <input ng-model="offset" type="text" ng-keydown="validate($event)">
+
         </div>
-        <div align="center"><button ng-click="encrypt()" class="button">Зашифровать</button>
+        <div align="center">
+            <button ng-click="encrypt()" class="button">Зашифровать</button>
         </div>
-        <div align="center"><button ng-click="decrypt(); getPropose()" class="button">Расшифровать</button>
+        <div align="center">
+            <button ng-click="decrypt(); getPropose()" class="button">Расшифровать</button>
         </div>
     </div>
     <div class="row">
